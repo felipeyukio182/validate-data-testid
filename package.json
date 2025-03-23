@@ -1,0 +1,30 @@
+{
+  "name": "validate-data-testid",
+  "version": "1.0.0",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felipeyukio182/validate-data-testid.git"
+  },
+  "keywords": [],
+  "author": "Felipe Yukio Fupunaga",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/felipeyukio182/validate-data-testid/issues"
+  },
+  "bin": {
+    "validate-data-testid": "./bin/index.js"
+  },
+  "homepage": "https://github.com/felipeyukio182/validate-data-testid#readme",
+  "description": "A CLI tool to validate if the data-testid attribute is set in the html.",
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "cheerio": "^1.0.0",
+    "commander": "^13.1.0",
+    "glob": "^11.0.1",
+    "node-emoji": "^2.2.0"
+  }
+}
