@@ -6,13 +6,13 @@ const fs = require("fs");
 const glob = require("glob");
 const cheerio = require("cheerio");
 const nodeEmoji = require("node-emoji");
-const c = require("chalk");
-const chalk = new c.Chalk();
+const chalk = require("chalk");
+// const chalk = new c.Chalk(); // chalk 5+
 
 program
   .name('validate-data-testid')
   .description('A CLI tool to validate if the data-testid attribute is set in the html.')
-  .version('0.0.1');
+  .version('0.0.2');
 
 program.option('-t, --tag <type>', 'html tag to be validated', 'div');
 
