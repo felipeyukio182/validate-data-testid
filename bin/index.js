@@ -1,9 +1,23 @@
+const commander = require("commander");
+const program = new commander.Command();
+
 const fs = require("fs");
 const glob = require("glob");
 const cheerio = require("cheerio");
 const nodeEmoji = require("node-emoji");
 const c = require("chalk");
 const chalk = new c.Chalk();
+
+program
+  .name('validate-data-testid')
+  .description('A CLI tool to validate if the data-testid attribute is set in the html.')
+  .version('1.0.0');
+
+program.option('-t, --tag <type>', 'html tag to be validated', 'div');
+
+program.parse();
+
+const tag = program.opts()?.tag;
 
 const filesNames = glob.sync("**/*.html", { nodir: true, ignore: ["node_modules/**", "coverage/**"] });
 
@@ -14,7 +28,7 @@ console.log(chalk.bold.blue("Validating HTML files without data-testid attribute
 filesNames.forEach(fileName => {
     const fileContent = fs.readFileSync(fileName, "utf-8");
     const $ = cheerio.load(fileContent);
-    const elementsWithoutDataTestid = $('div:not([data-testid]), div[data-testid=""]')?.filter(
+    const elementsWithoutDataTestid = $(`${tag}:not([data-testid]), ${tag}[data-testid=""]`)?.filter(
         (_, el) => !el.attribs?.['attr.data-testid'] && !el.attribs?.['attr.data-testId']
     );
 
