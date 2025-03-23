@@ -11,7 +11,7 @@ const chalk = new c.Chalk();
 program
   .name('validate-data-testid')
   .description('A CLI tool to validate if the data-testid attribute is set in the html.')
-  .version('1.0.0');
+  .version('0.0.1');
 
 program.option('-t, --tag <type>', 'html tag to be validated', 'div');
 
@@ -23,7 +23,7 @@ const filesNames = glob.sync("**/*.html", { nodir: true, ignore: ["node_modules/
 
 let isMissingDataTestid = false;
 
-console.log(chalk.bold.blue("Validating HTML files without data-testid attribute...\n"));
+console.log(chalk.bold.blue(`Validating HTML files without data-testid attribute. Found ${filesNames?.length} file${filesNames?.length > 1 ? 's' : ''}...\n`));
 
 filesNames.forEach(fileName => {
     const fileContent = fs.readFileSync(fileName, "utf-8");
